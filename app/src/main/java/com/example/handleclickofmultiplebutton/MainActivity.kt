@@ -2,12 +2,14 @@ package com.example.handleclickofmultiplebutton
 
 import android.app.DatePickerDialog
 import android.app.SearchManager
+import android.app.TimePickerDialog
 import android.content.DialogInterface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.DatePicker
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -82,6 +84,40 @@ class MainActivity : AppCompatActivity() {
         else if(view.id==R.id.btnsecond)
         {
             Toast.makeText(this,"second btn click",Toast.LENGTH_SHORT).show()
+        }
+        else if(view.id==R.id.edttime)
+        {
+            var cal:Calendar= Calendar.getInstance()
+            var hour=cal.get(Calendar.HOUR_OF_DAY)
+            var minute=cal.get(Calendar.MINUTE)
+            var second=cal.get(Calendar.SECOND)
+
+            var time:TimePickerDialog= TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener(
+                    {TimePickerDialog,hour,minute->
+                        edttime.setText("$hour:$minute")
+                    }
+                ),hour,minute,true)
+            time.show()
+
+        }
+        else if(view.id==R.id.btntime)
+        {
+
+            var cal:Calendar= Calendar.getInstance()
+            var hour=cal.get(Calendar.HOUR_OF_DAY)
+            var minute=cal.get(Calendar.MINUTE)
+            var second=cal.get(Calendar.SECOND)
+
+
+            var time:TimePickerDialog= TimePickerDialog(this,
+                TimePickerDialog.OnTimeSetListener(
+                    {TimePickerDialog,hour,minute->
+                        edttime.setText("$hour:$minute")
+                    }
+                ),hour,minute,true)
+            time.show()
+
         }
         else if(view.id==R.id.edtdate)
         {
